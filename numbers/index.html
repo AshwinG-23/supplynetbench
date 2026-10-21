@@ -1,0 +1,1230 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A large set of simulated single-product supply chains, built with SupplyNetPy.">
+      
+      
+      
+        <link rel="canonical" href="https://ashwing-23.github.io/supplynetbench/numbers/">
+      
+      
+        <link rel="prev" href="../network/">
+      
+      
+        <link rel="next" href="../simulation/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>How the numbers are chosen - SupplyNetBench</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-the-numbers-are-chosen" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SupplyNetBench" class="md-header__button md-logo" aria-label="SupplyNetBench" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SupplyNetBench
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              How the numbers are chosen
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/AshwinG-23/supplynetbench" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AshwinG-23/supplynetbench
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SupplyNetBench" class="md-nav__button md-logo" aria-label="SupplyNetBench" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SupplyNetBench
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/AshwinG-23/supplynetbench" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AshwinG-23/supplynetbench
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supplynetpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SupplyNetPy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How a network is built
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How the numbers are chosen
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How the numbers are chosen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-order-of-filling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The order of filling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-setup-wide-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Setup-wide settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-customer-demand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Customer demand
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-flow-pushed-upstream" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Flow pushed upstream
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-delivery-times" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Delivery times
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-prices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Prices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-stock-rule-at-every-site" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Stock rule at every site
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-factory-capacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Factory capacity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-limited-suppliers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Limited suppliers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-breakdowns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Breakdowns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-four-industries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The four industries
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How a simulation runs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assumptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Assumptions and limits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dataset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The dataset
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../navigate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finding your way around
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-order-of-filling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The order of filling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-setup-wide-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Setup-wide settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-customer-demand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Customer demand
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-flow-pushed-upstream" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Flow pushed upstream
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-delivery-times" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Delivery times
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-prices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Prices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-stock-rule-at-every-site" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Stock rule at every site
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-factory-capacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Factory capacity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-limited-suppliers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Limited suppliers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-breakdowns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Breakdowns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-four-industries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The four industries
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="how-the-numbers-are-chosen">How the numbers are chosen<a class="headerlink" href="#how-the-numbers-are-chosen" title="Permanent link">&para;</a></h1>
+<p>Once the network is fixed, every node and link needs numbers: how much customers buy, how long
+deliveries take, when to reorder, how big the factory is, what things cost. This page explains where
+each number comes from. The code is <code>configure()</code> in <code>generator/chain.py</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">The main idea: customers first, everything else follows</p>
+<p>Customer demand is drawn first. It is then <strong>pushed up the network</strong>, so each site knows how much it
+must carry on a normal day. Stock levels, factory size, prices and freight are all worked out from
+that flow. A big shop therefore gets a big stock and a busy factory gets a big machine. Nothing is
+random on its own, so the numbers always fit together.</p>
+</div>
+<h2 id="the-order-of-filling">The order of filling<a class="headerlink" href="#the-order-of-filling" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+    K["0. Setup-wide settings&lt;br/&gt;(industry, good or bad management,&lt;br/&gt;season, growth, breakdown risk)"] --&gt; D
+    D["1. Customer demand&lt;br/&gt;at every shop"] --&gt; F["2. Flow pushed upstream&lt;br/&gt;(each site's normal daily load)"]
+    F --&gt; L["3. Delivery times&lt;br/&gt;on every link"]
+    L --&gt; P["4. Prices&lt;br/&gt;(factory → shop)"]
+    P --&gt; S["5. Stock rule at every site&lt;br/&gt;(reorder level, order size)"]
+    S --&gt; C["6. Factory capacity"]
+    C --&gt; U["7. Limited suppliers"]
+    U --&gt; O["8. Breakdowns"]</code></pre>
+<h2 id="0-setup-wide-settings">0. Setup-wide settings<a class="headerlink" href="#0-setup-wide-settings" title="Permanent link">&para;</a></h2>
+<p>Before any node is filled, a few settings are drawn once for the whole setup. They are stored in the
+<code>configs</code> table.</p>
+<ul>
+<li><strong>Industry</strong>: groceries (FMCG), electronics, medicines (pharma) or industrial spare parts. Each
+  industry has its own number ranges (table below).</li>
+<li><strong>Stress or control.</strong> 80% of setups are <strong>stress</strong> setups: they may forecast badly, run price wars or
+  aim for low stock levels, so failures happen. 20% are <strong>control</strong> setups: honest forecasts, normal
+  prices and a 90%, 95% or 98% service target, the usual range in practice <sup id="fnref:king"><a class="footnote-ref" href="#fn:king">3</a></sup>. The <code>regime</code>
+  column tells them apart.</li>
+<li><strong>Season</strong> (70% of setups): demand goes up and down once a year, usually by up to ±50% (a few streams up to ±75%).</li>
+<li><strong>Growth</strong>: demand grows or shrinks by −10% to +20% a year.</li>
+<li><strong>Breakdown risk</strong> (60% of setups): some sites break down now and then.</li>
+<li><strong>Limited suppliers</strong> (50% of setups): some suppliers can run out.</li>
+</ul>
+<h2 id="1-customer-demand">1. Customer demand<a class="headerlink" href="#1-customer-demand" title="Permanent link">&para;</a></h2>
+<p>Each customer stream gets:</p>
+<table>
+<thead>
+<tr>
+<th>Number</th>
+<th>How it is chosen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Average units per day</td>
+<td>Drawn around the industry's typical value (a log-normal spread)</td>
+</tr>
+<tr>
+<td>Orders per day</td>
+<td>Drawn from the industry's range. Average order size = units ÷ orders</td>
+</tr>
+<tr>
+<td>Order size</td>
+<td>Varies around its average. How much it varies depends on the industry (industrial orders are the lumpiest)</td>
+</tr>
+<tr>
+<td>Season and growth</td>
+<td>The setup's season and growth, with a small change per stream</td>
+</tr>
+</tbody>
+</table>
+<p>Customers arrive at random times (a Poisson process <sup id="fnref:ross"><a class="footnote-ref" href="#fn:ross">1</a></sup>), faster in the busy season. A customer
+takes what is on the shelf. If the shelf is short, the rest of the order is <strong>lost</strong>. Customers never
+wait.</p>
+<h2 id="2-flow-pushed-upstream">2. Flow pushed upstream<a class="headerlink" href="#2-flow-pushed-upstream" title="Permanent link">&para;</a></h2>
+<p>Each site's <strong>flow</strong> is the average number of units it must pass on per day:</p>
+<ul>
+<li>A shop's flow = its customers' demand.</li>
+<li>A warehouse's flow = the share of its children's flow that it supplies.</li>
+<li>A factory's flow = what its warehouses take from it.</li>
+<li>A supplier's flow = the factory's flow × units of raw material per product (the <strong>recipe</strong>, 1 to 3).</li>
+</ul>
+<p>A site with two suppliers splits its orders at random with fixed weights. The main supplier gets 50% to
+90% of orders.</p>
+<h2 id="3-delivery-times">3. Delivery times<a class="headerlink" href="#3-delivery-times" title="Permanent link">&para;</a></h2>
+<p>Every link gets a delivery time drawn from its industry's range (table below). Each shipment's actual
+time varies around that average (a gamma distribution), by an amount that is also drawn per setup.
+A factory needs all its raw materials, so its planning time is the <strong>longest</strong> of its inbound
+deliveries, plus the time to make a batch.</p>
+<h2 id="4-prices">4. Prices<a class="headerlink" href="#4-prices" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Suppliers sell raw material at a price from the industry range.</li>
+<li>A factory's cost per unit = raw materials + making cost.</li>
+<li>The shop price is the factory cost × a markup. The markup is drawn per setup and split along the
+  chain between the factory, the warehouses and the shop.</li>
+<li>Stress setups may squeeze the markup almost to zero (a price war), so some of them lose money.</li>
+<li><strong>Holding cost</strong>: keeping one unit in stock for a year costs 10% to 40% of its value. The lower end
+  matches the median measured by APQC across 6,468 organisations <sup id="fnref:apqc"><a class="footnote-ref" href="#fn:apqc">5</a></sup>.</li>
+<li><strong>Freight</strong>: each delivery costs a fixed amount plus a small share (0.3% to 3%) of the value of the
+  goods.</li>
+</ul>
+<h2 id="5-stock-rule-at-every-site">5. Stock rule at every site<a class="headerlink" href="#5-stock-rule-at-every-site" title="Permanent link">&para;</a></h2>
+<p>Every factory, warehouse and shop follows the <strong>(s, S) rule</strong>, the standard textbook stock rule <sup id="fnref:silver"><a class="footnote-ref" href="#fn:silver">2</a></sup>:</p>
+<blockquote>
+<p>Check stock every <em>r</em> days. If the stock position has fallen to the <strong>reorder level s</strong> or below,
+order enough to bring it back up to the <strong>order-up-to level S</strong>.</p>
+</blockquote>
+<p>The <em>stock position</em> is the stock on the shelf, plus what is already on its way, minus what is still
+owed to others.</p>
+<p>How s and S are worked out:</p>
+<ol>
+<li><strong>Forecast.</strong> The planner's estimate of daily demand. In stress setups it is often too low (by up to
+   about 50%). In control setups it is right on average.</li>
+<li>
+<p><strong>Cover for the delivery time.</strong> s must cover the forecast demand during the delivery time plus the
+   review period, plus a safety margin for surprises:</p>
+<div class="arithmatex">\[ s = \hat D\,(L + r) + z \sqrt{(L + r)\,\sigma_D^2 + \hat D^2\,\sigma_L^2} \]</div>
+<p>where <span class="arithmatex">\(\hat D\)</span> is the forecast per day, <span class="arithmatex">\(L\)</span> the delivery time, <span class="arithmatex">\(r\)</span> the review period, <span class="arithmatex">\(\sigma_D^2\)</span>
+and <span class="arithmatex">\(\sigma_L^2\)</span> the variances of daily demand and delivery time, and <span class="arithmatex">\(z\)</span> the <strong>safety factor</strong> set by
+the service target (for example 95% → z ≈ 1.64). This is the usual safety-stock formula <sup id="fnref2:king"><a class="footnote-ref" href="#fn:king">3</a></sup>.
+3. <strong>Order size Q = S − s.</strong> Chosen so that ordering costs and holding costs are balanced, in the style
+   of the economic order quantity (EOQ) <sup id="fnref:harris"><a class="footnote-ref" href="#fn:harris">4</a></sup>, then allowed to vary.
+4. <strong>Never too small for the children.</strong> A warehouse's s is at least the biggest order one of its
+   children places, so a single child order never empties it by surprise.</p>
+</li>
+</ol>
+<p>Every site starts the simulation with S units on the shelf.</p>
+<h2 id="6-factory-capacity">6. Factory capacity<a class="headerlink" href="#6-factory-capacity" title="Permanent link">&para;</a></h2>
+<p>A factory makes one batch at a time. The batch size is set so that, on a normal day, the factory is
+busy <strong>60% to 97%</strong> of the time. For comparison, Indian manufacturing as a whole ran at 74.6% of capacity
+in early 2026 <sup id="fnref:rbi"><a class="footnote-ref" href="#fn:rbi">6</a></sup>.</p>
+<p>Capacity is sized for <strong>normal</strong> demand. The busy season and demand growth can push a factory above
+its limit. How far is recorded in <code>peak_load</code> (above 1 means it cannot keep up at the peak).</p>
+<h2 id="7-limited-suppliers">7. Limited suppliers<a class="headerlink" href="#7-limited-suppliers" title="Permanent link">&para;</a></h2>
+<p>In half of the setups, some suppliers are <strong>limited</strong>. They produce raw material at a fixed rate
+(3% to 67% above their normal flow) into a store of limited size. If factories need more than that for
+long enough, the supplier runs out.</p>
+<p>The store holds 7 to 30 days of flow, and at least enough to fill the <strong>largest single order</strong> a
+factory can ever send it. That second rule matters: in SupplyNetPy an order is shipped whole, so an order
+bigger than the whole store could never be filled and the factory would stop for good.</p>
+<h2 id="8-breakdowns">8. Breakdowns<a class="headerlink" href="#8-breakdowns" title="Permanent link">&para;</a></h2>
+<p>In 60% of setups, each supplier, factory and warehouse (without its own customers) may break down,
+with a chance of 20% to 70% per site. A site that can break down does so every 180 to 1,500 days on
+average, and each breakdown lasts 2 to 30 days on average. The time between breakdowns is random
+(exponential). Breakdown lengths have a long tail, so a rare breakdown can last several months. For
+comparison, the 2021 fire at the Renesas Naka chip plant took about 97 days to recover from <sup id="fnref:renesas"><a class="footnote-ref" href="#fn:renesas">7</a></sup>.</p>
+<p>During a breakdown a site takes <strong>no new orders</strong>. Shipments already on the road still arrive.</p>
+<h2 id="the-four-industries">The four industries<a class="headerlink" href="#the-four-industries" title="Permanent link">&para;</a></h2>
+<p>The rules above are the same for every industry. Only the ranges change:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Groceries (FMCG)</th>
+<th>Electronics</th>
+<th>Medicines (pharma)</th>
+<th>Industrial spare parts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Typical demand per customer stream</td>
+<td>40 units/day</td>
+<td>8 units/day</td>
+<td>15 units/day</td>
+<td>2 units/day</td>
+</tr>
+<tr>
+<td>Customer orders per day</td>
+<td>2–6</td>
+<td>0.5–2</td>
+<td>1–3</td>
+<td>0.1–0.8 (few, large orders)</td>
+</tr>
+<tr>
+<td>Delivery time, supplier → factory</td>
+<td>2–10 days</td>
+<td>14–45 days</td>
+<td>30–90 days</td>
+<td>7–30 days</td>
+</tr>
+<tr>
+<td>Delivery time, factory → warehouse</td>
+<td>1–5 days</td>
+<td>5–30 days</td>
+<td>3–10 days</td>
+<td>3–14 days</td>
+</tr>
+<tr>
+<td>Delivery time, warehouse → shop</td>
+<td>1–3 days</td>
+<td>2–7 days</td>
+<td>1–4 days</td>
+<td>2–7 days</td>
+</tr>
+<tr>
+<td>Raw material price per unit</td>
+<td>0.2–2</td>
+<td>10–120</td>
+<td>2–40</td>
+<td>20–400</td>
+</tr>
+<tr>
+<td>Shop price ÷ factory cost</td>
+<td>1.5–2.4</td>
+<td>1.3–2.0</td>
+<td>1.8–4.5</td>
+<td>1.6–3.5</td>
+</tr>
+<tr>
+<td>Holding cost per year (share of value)</td>
+<td>10%–30%</td>
+<td>10%–40%</td>
+<td>10%–30%</td>
+<td>10%–35%</td>
+</tr>
+<tr>
+<td>Average service target</td>
+<td>50%–99%</td>
+<td>50%–98%</td>
+<td>70%–99.5%</td>
+<td>50%–98%</td>
+</tr>
+<tr>
+<td>Freight (share of goods value)</td>
+<td>1%–3%</td>
+<td>0.5%–2%</td>
+<td>0.3%–1%</td>
+<td>1%–3%</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>consumer pack</td>
+<td>device</td>
+<td>strip / pack</td>
+<td>part</td>
+</tr>
+</tbody>
+</table>
+<p>Money has no currency. Each setup uses its own price units, set by its raw-material price.</p>
+<div class="admonition info">
+<p class="admonition-title">Where these ranges come from</p>
+<p>The ranges are reasoned design choices, chosen to be plausible for each industry and wide enough to
+give variety. They are <strong>not</strong> fitted to data. The few that were checked against public figures are
+listed in <a href="../assumptions/#checked-against-public-figures">Assumptions and limits</a>.</p>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:ross">
+<p>S. M. Ross, <em>Introduction to Probability Models</em>, Academic Press (any recent edition), chapter on the Poisson process.&#160;<a class="footnote-backref" href="#fnref:ross" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:silver">
+<p>E. A. Silver, D. F. Pyke and D. J. Thomas, <em>Inventory and Production Management in Supply Chains</em>, 4th ed., CRC Press, 2017. The (s, S) policy was shown to be optimal under broad conditions by H. Scarf, "The optimality of (S, s) policies in the dynamic inventory problem", 1960.&#160;<a class="footnote-backref" href="#fnref:silver" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:king">
+<p>P. L. King, "Understanding safety stock and mastering its equations", <em>APICS Magazine</em>, July/August 2011. <a href="https://web.mit.edu/2.810/www/files/readings/King_SafetyStock.pdf">https://web.mit.edu/2.810/www/files/readings/King_SafetyStock.pdf</a>&#160;<a class="footnote-backref" href="#fnref:king" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:king" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:harris">
+<p>F. W. Harris, "How many parts to make at once", <em>Factory, The Magazine of Management</em> 10(2), 1913 (the original EOQ). See also C. Caplice, <em>Inventory Management</em>, MIT OpenCourseWare ESD.260, lecture 11, 2006. <a href="https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/8b53c45fd26ffff706d815131e8d177e_lect11.pdf">https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/8b53c45fd26ffff706d815131e8d177e_lect11.pdf</a>&#160;<a class="footnote-backref" href="#fnref:harris" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:apqc">
+<p>APQC, "Inventory carrying cost as a percentage of inventory value" (measure 100784). <a href="https://www.apqc.org/what-we-do/benchmarking/open-standards-benchmarking/measures/inventory-carrying-cost-percentage">https://www.apqc.org/what-we-do/benchmarking/open-standards-benchmarking/measures/inventory-carrying-cost-percentage</a>&#160;<a class="footnote-backref" href="#fnref:apqc" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:rbi">
+<p>Reserve Bank of India, Order Books, Inventories and Capacity Utilisation Survey (OBICUS), Q1 2026-27: 74.6% (76.3% seasonally adjusted). <a href="https://www.rbi.org.in/scripts/PublicationsView.aspx?id=24087">https://www.rbi.org.in/scripts/PublicationsView.aspx?id=24087</a>&#160;<a class="footnote-backref" href="#fnref:rbi" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:renesas">
+<p>Renesas Electronics, "Update 10: Notice regarding the semiconductor manufacturing factory (Naka Factory) fire", 2021. <a href="https://www.renesas.com/en/about/press-room/update-10-notice-regarding-semiconductor-manufacturing-factory-naka-factory-fire-production-capacity">https://www.renesas.com/en/about/press-room/update-10-notice-regarding-semiconductor-manufacturing-factory-naka-factory-fire-production-capacity</a>&#160;<a class="footnote-backref" href="#fnref:renesas" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../network/" class="md-footer__link md-footer__link--prev" aria-label="Previous: How a network is built">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                How a network is built
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../simulation/" class="md-footer__link md-footer__link--next" aria-label="Next: How a simulation runs">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                How a simulation runs
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
