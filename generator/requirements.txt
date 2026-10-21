@@ -1,0 +1,7 @@
+# Dataset generator (chain.py, dataset.py, loader.py, pilot_report.py); versions as tested on 2026-10-16, python 3.12.
+supplynetpy==0.2.2
+simpy==4.1.2
+numpy==2.5.4
+pyarrow==26.0.0
+networkx==3.7
+matplotlib==3.11.2

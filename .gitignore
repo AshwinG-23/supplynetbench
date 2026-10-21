@@ -1,0 +1,26 @@
+# Whitelist: only the public project is tracked; notes, data and environments stay local.
+/*
+!/.gitignore
+!/.github/
+!/README.md
+!/LICENSE
+!/LICENSE-DATA
+!/check.md
+!/mkdocs.yml
+!/docs/
+!/generator/
+generator/*
+!generator/chain.py
+!generator/dataset.py
+!generator/loader.py
+!generator/topology.py
+!generator/tree_grammar.py
+!generator/test_tree_grammar.py
+!generator/count_trees.py
+!generator/trees.py
+!generator/pilot_report.py
+!generator/requirements.txt
+!generator/run_build.sh
+!generator/run_night.sh
+!generator/setup_server.sh
+__pycache__/

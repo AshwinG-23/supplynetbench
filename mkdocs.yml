@@ -1,0 +1,60 @@
+site_name: SupplyNetBench
+site_description: A large set of simulated single-product supply chains, built with SupplyNetPy.
+# site_url / repo_url: set after the repository moves to its final GitHub account.
+
+nav:
+  - Introduction: index.md
+  - SupplyNetPy: supplynetpy.md
+  - How a network is built: network.md
+  - How the numbers are chosen: numbers.md
+  - How a simulation runs: simulation.md
+  - Assumptions and limits: assumptions.md
+  - The dataset: dataset.md
+  - Finding your way around: navigate.md
+  - Glossary: glossary.md
+  - References: references.md
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.highlight
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      toggle: {icon: material/weather-night, name: Dark mode}
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      toggle: {icon: material/weather-sunny, name: Light mode}
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - footnotes
+  - tables
+  - toc: {permalink: true}
+  - pymdownx.details
+  - pymdownx.arithmatex: {generic: true}
+  - pymdownx.snippets: {base_path: [docs], check_paths: true}
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - search
+
+exclude_docs: |
+  generated/
+  make_figures.py
+  requirements.txt
