@@ -1,6 +1,8 @@
 site_name: SupplyNetBench
 site_description: A large set of simulated single-product supply chains, built with SupplyNetPy.
-# site_url / repo_url: set after the repository moves to its final GitHub account.
+site_url: https://ashwing-23.github.io/supplynetbench/
+repo_url: https://github.com/AshwinG-23/supplynetbench
+repo_name: AshwinG-23/supplynetbench
 
 nav:
   - Introduction: index.md

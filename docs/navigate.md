@@ -6,8 +6,8 @@ All examples are in Python.
 ## Setup
 
 ```bash
-git clone <this repository>
-cd <repository>
+git clone https://github.com/AshwinG-23/supplynetbench.git
+cd supplynetbench
 python -m venv .venv && .venv/bin/pip install -r generator/requirements.txt pandas
 ```
 

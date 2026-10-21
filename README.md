@@ -9,7 +9,7 @@ costs, profit, per node and per day).
 It is meant for training and testing models, for example graph neural networks, that predict how a
 supply chain will perform without running the simulation.
 
-**Documentation:** see the `docs/` folder, published with GitHub Pages (link added after the first deploy).
+**Documentation:** <https://ashwing-23.github.io/supplynetbench/>
 **Data:** on Hugging Face (link added after the first upload).
 
 ## Contents
